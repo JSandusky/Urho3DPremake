@@ -43,10 +43,13 @@ FBXSDK = D:\FBXSDK
   - Urho2D
   - OpenGL / DX11
     - Time to let DX9 die in peace
-  - Network
+  - Network (kNet / CivetWeb)
   - Database (SQLite/ODBC)
   - Angelscript
   - IK
+  - Navitation
+  - Bullet / Box2D
+  - UI
 - RampGenerator
 - OgreImporter
 - PackageTool
