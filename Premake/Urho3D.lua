@@ -15,8 +15,6 @@ URHO3D_URHO2D = GetOption("URHO3D_URHO2D", true)
 URHO3D_NETWORK = GetOption("URHO3D_NETWORK", true)
 URHO3D_OPENCL = GetOption("URHO3D_OPENCL", true)
 URHO3D_COMPUTE = GetOption("URHO3D_COMPUTE", false)
-URHO3D_CARVE = GetOption("URHO3D_CARVE", true)
-URHO3D_UDMF = GetOption("URHO3D_UDMF", true)
 
 CommonDefines = { 
     "URHO3D_STATIC_RUNTIME",
@@ -69,9 +67,6 @@ if URHO3D_URHO2D == true then
 end
 if URHO3D_NETWORK == true then
     dofile "kNet.lua"
-end
-if URHO3D_CARVE == true then
-    dofile "Carve.lua"
 end
 
 dofile "Bullet.lua"
@@ -147,13 +142,6 @@ project "Urho3D"
         CommonDefines:insert("URHO3D_NETWORK")
         UrhoSources("../Source/Urho3D/Network")
     end
-    if URHO3D_CARVE then
-        CommonDefines:insert("URHO3D_CARVE")
-    end
-    if URHO3D_UDMF then
-        CommonDefines:insert("URHO3D_UDMF")
-        UrhoSources("../Source/Urho3D/UDMF")
-    end
     
     if URHO3D_OPENCL then
         FindOpenCL()
@@ -164,9 +152,9 @@ project "Urho3D"
     elseif URHO3D_COMPUTE then
         UrhoSources("../Source/Urho3D/Compute")
         if URHO3D_OPENGL then
-            UrhoSources("../Source/Urho3D/Compute/Direct3D11")
-        else
             UrhoSources("../Source/Urho3D/Compute/OpenGL")
+        else
+            UrhoSources("../Source/Urho3D/Compute/Direct3D11")
         end
     end
         
@@ -212,11 +200,6 @@ project "Urho3D"
         optimize "On"
         symbols "On"
         architecture "x64"
-        
-MODULE_DATGUI = GetOption("DATGUI", true)
-if MODULE_DATGUI then
-    dofile "Modules/DatGui.lua"
-end
       
 dofile "Apps/Urho3DPlayer.lua"
 Urho3D_ToolProject("Block", false, false)

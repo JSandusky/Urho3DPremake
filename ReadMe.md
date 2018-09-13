@@ -22,6 +22,8 @@ These scripts have been stripped pretty intensely. Vendor/target specific stuff 
 
 Basic checks of ensuring the WIN32 stuff works have been made.
 
+**SDL** and **IK** require you cook some files first that CMake scripts were generating
+
 ## Configuration
 
 URHO3D_XXX options are read from an "Options.txt" file in the root directory, the contents should be written key-value pairs separated by an equals. 
@@ -50,6 +52,15 @@ FBXSDK = D:\FBXSDK
 - PackageTool
 - SpritePacker
 
+## To Use
+
+- Run `WinMakeLinks_RunAsAdmin.bat`
+- Run Premake
+    - Solution is output into the root folder
+    - Projects output into `Generated` (trivial to clean)
+    - Binaries are written into `bin` and intermediarries into `bin/build`
+    
+See the `Premake/Modules/DatGui.lua` file for an example of what setting up a **Module** looks like. Modules get compiled link to Urho3D and are linked to by the Urho3DPlayer. Just an optional convenience to avoid polluting the Urho3D library.
 
 ## What Doesn't Compile
 
